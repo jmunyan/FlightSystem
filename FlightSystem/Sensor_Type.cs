@@ -5,7 +5,7 @@ namespace FlightSystem
 {
     internal class Sensor_Type
     {
-
+        /*
         //some generic sensor types
         string[] sensor_types = { "comass", "spedometer", "altimeter", "anemometer", "engine_thermometer", "thermometer" };
 
@@ -14,7 +14,9 @@ namespace FlightSystem
         private int[] spedometer_parameters = { 0, 10000 };
         private int[] altimeter_parameters = { -100, 50000 };
         private int[] anemometer_parameters = { -15000, 15000 };
-           
+        
+        [time_of_measurement] TIMESTAMP NULL, 
+    [value] FLOAT NULL,*/
 
         string type;
         int[] parameters;
