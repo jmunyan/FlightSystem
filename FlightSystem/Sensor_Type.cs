@@ -44,6 +44,7 @@ namespace FlightSystem
         private string new_sensor_type(string type, int[] parameters)
         {
             sensor_parameters.Add(type, parameters);
+            return type;
         }
 
         protected int[] get_parameters(string name)
