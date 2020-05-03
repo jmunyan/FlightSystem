@@ -7,7 +7,7 @@ namespace FlightSystem
     {
 
         //some generic sensor types
-        string[] sensor_types = { "comass", "spedometer", "altimeter", "anemometer" };
+        string[] sensor_types = { "comass", "spedometer", "altimeter", "anemometer", "engine_thermometer", "thermometer" };
 
         //some generic sensor parameters
         private int[] compass_parameters = { 0, 360 };

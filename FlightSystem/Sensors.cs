@@ -20,15 +20,18 @@ namespace FlightSystem
 
         public int get_value(){
             ///makes a random value within the bounds of the 
-            return 0;//HOW TO DATABASE?!?!?!;
+            return 0;
         }
 
-        protected bool reset(Sensors s){
+        protected bool reset(){
             this.value = 0;
             get_value();
         }
 
-        protected void detect(){
+        protected string[] detect(){
+            ///gets the sensors from the database.
+            
+            return 
             
         }
 

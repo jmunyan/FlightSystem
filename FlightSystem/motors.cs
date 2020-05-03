@@ -4,32 +4,42 @@ namespace FlightSystem
 {
     class Motors
     {
-        string output;//need to look into c# pointers since they aren't the same as c
-        int current_speed;
+
+        int current_power;
         int heat;
-        int max_voltage;
-        
-        
+        int current_temperature;
+        int brakes;
 
-        public Motors(){
+        public Motors()
+        {
+            this.current_power = 0;
+            current_temperature = 20;
+            this.heat = current_temperature;
+        }
+
+        private Boolean start()
+        {
+            //starts the motors with a base amount of power
+            power(10);
 
         }
 
-        private Boolean start(){
-
+        public void emergency_stop()
+        {
+            power(0);
+            brakes = 100;
         }
 
-        public void emergency_stop(){
-
+        public void stop(int a)
+        {
+            brakes = 100;
         }
 
-        public void stop(int a){
-
+        public int power(int new_value){
+            output = new_value;
+            return new_value;
         }
 
-        public int speed(int new_speed){
-            
-        }
 
     }
 }
