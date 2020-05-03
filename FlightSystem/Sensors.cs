@@ -10,7 +10,7 @@ using System.Collections.Generic;
 
 namespace FlightSystem
 {
-    class Sensors: Sensor_Type
+    class Sensors
     { 
 
         public Sensors(string type)
@@ -28,7 +28,7 @@ namespace FlightSystem
             get_value();
         }
 
-        protected detect(){
+        protected void detect(){
             
         }
 

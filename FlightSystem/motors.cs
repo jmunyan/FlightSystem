@@ -4,7 +4,7 @@ namespace FlightSystem
 {
     class Motors
     {
-        char* output;//need to look into c# pointers since they aren't the same as c
+        string output;//need to look into c# pointers since they aren't the same as c
         int current_speed;
         int heat;
         int max_voltage;

@@ -39,7 +39,7 @@ namespace FlightSystem
 
         }
 
-        public get_current_location()
+        public int[] get_current_location()
         {
             ///returns the current x,y(longitude, latitude) coordinates
         }
