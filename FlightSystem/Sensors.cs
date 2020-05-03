@@ -13,14 +13,14 @@ namespace FlightSystem
     class Sensors: Sensor_Type
     { 
 
-        public Sensors(string sensor_type)
+        public Sensors(string type)
         {
             
         }
 
         public int get_value(){
             ///makes a random value within the bounds of the 
-            return //HOW TO DATABASE?!?!?!;
+            return 0;//HOW TO DATABASE?!?!?!;
         }
 
         protected bool reset(Sensors s){
