@@ -40,7 +40,7 @@
             // 
             // cpbMPH
             // 
-            this.cpbMPH.AnimationFunction = WinFormAnimation.KnownAnimationFunctions.CircularEaseInOut;
+            this.cpbMPH.AnimationFunction = WinFormAnimation.KnownAnimationFunctions.Liner;
             this.cpbMPH.AnimationSpeed = 9000;
             this.cpbMPH.BackColor = System.Drawing.Color.Transparent;
             this.cpbMPH.Font = new System.Drawing.Font("Times New Roman", 39.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -156,6 +156,7 @@
             this.trackBar1.Size = new System.Drawing.Size(45, 274);
             this.trackBar1.TabIndex = 4;
             this.trackBar1.TickStyle = System.Windows.Forms.TickStyle.Both;
+            this.trackBar1.Scroll += new System.EventHandler(this.trackBar1_Scroll);
             // 
             // Form1
             // 

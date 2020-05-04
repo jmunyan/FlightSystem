@@ -83,5 +83,11 @@ namespace FlightSystem
                 button1.Visible = false;
             }
         }
+
+        private void trackBar1_Scroll(object sender, EventArgs e)
+        {
+            cpbMPH.Text = Convert.ToString(trackBar1.Value*12.5);
+            cpbMPH.Value = (int)((double)trackBar1.Value * 10)+cpbMPH.Minimum;
+        }
     }
 }
