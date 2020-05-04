@@ -45,6 +45,6 @@ namespace FlightSystem
             return new_power;
         }
 
-
+         
     }
 }

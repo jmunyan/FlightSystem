@@ -45,11 +45,14 @@ namespace FlightSystem
         }
 
         public double get_value(){
-            ///useless for this implementation, because no real data is being created
+            ///almost useless for this implementation, because no real data is being created
             ///
-            if(db.bool_search_table("sensor_value", "type", "0"))
-            {
 
+            SqlDataReader reader = db.run_sql_command("SELECT value FROM sensor_values WHERE type=" + type + " ORDER BY time_of_measurement LIMIT 1");
+
+            if (reader.HasRows)
+            {
+                return reader.GetDouble(0);
             }
             return assign_Random_Test_Value();
         }
