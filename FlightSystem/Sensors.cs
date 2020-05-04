@@ -1,6 +1,10 @@
 ﻿using System;
-using System.Runtime.CompilerServices;
 using System.Collections.Generic;
+using System.Data.SqlClient;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
 
 /*
  * not using this because it isn't necessary
@@ -12,7 +16,7 @@ namespace FlightSystem
 {
 
     class Sensors
-    { 
+    {
 
         /// <summary>
         /// works with the different input and output methods typically found on a flying object.
@@ -21,7 +25,9 @@ namespace FlightSystem
         /// </summary>
         /// <param name="type"></param>
 
-        public Sensors(string type)
+        private DBTools db = new DBTools();
+
+        public Sensors(string type, int parameter_high = 0, int parameter_low = 0)
         {
             
         }
@@ -31,22 +37,20 @@ namespace FlightSystem
             return 0;
         }
 
-        protected bool reset(){
-            
-        }
-
         protected string[] detect(){
             ///gets the sensors from the database.
-            
-            string[] types = 
-            
-            return 
+
+            string[] types;
+
+            SqlDataReader reader = db.run_sql_command("SELECT type FROM sensor_parameters");
+
+            return types;
             
         }
 
         static float get_average_value(string item)
         {
-
+            return db.get_average("sensor values", item);
         }
 
         static int assign_Random_Test_Value(string item)

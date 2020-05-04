@@ -13,7 +13,7 @@ namespace FlightSystem
         public Motors()
         {
             this.current_power = 0;
-            current_temperature = 20;
+            current_temperature = 20;//the final version will get this from the db
             this.heat = current_temperature;
         }
 
@@ -21,6 +21,7 @@ namespace FlightSystem
         {
             //starts the motors with a base amount of power
             power(10);
+            return true;
 
         }
 
@@ -35,9 +36,10 @@ namespace FlightSystem
             brakes = 100;
         }
 
-        public int power(int new_value){
-            output = new_value;
-            return new_value;
+        public int power(int new_power)
+        {
+            current_power = new_power;
+            return new_power;
         }
 
 
