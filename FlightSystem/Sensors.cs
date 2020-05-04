@@ -57,7 +57,7 @@ namespace FlightSystem
             return assign_Random_Test_Value();
         }
 
-        protected object[] detect()
+        public object[] detect()
         {
             ///gets the sensors from the database.
 
@@ -77,10 +77,14 @@ namespace FlightSystem
             Random random = new Random();
 
             double value = random.NextDouble() * (max - min) + min;
-            db.insert_data("sensor_values", "type, value, time_of_measurement", type + ", " + Convert.ToString(value) + ", " + Convert.ToString(DateTime.Now));
+            record(value);
 
             return value;
         }
 
+        public void record(double value)
+        {
+            db.insert_data("sensor_values", "type, value, time_of_measurement", type + ", " + Convert.ToString(value) + ", " + Convert.ToString(DateTime.Now));
+        }
     }
 }
