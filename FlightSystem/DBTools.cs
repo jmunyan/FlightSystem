@@ -15,13 +15,12 @@ namespace FlightSystem
         /// class used for connecting to the local detabase
         /// and simplifying some sql features
         /// </summary>
-        /// <param name="DB_NAME"></param>
 
         protected SqlConnection cn = new SqlConnection("Data Source = (LocalDB)\\MSSQLLocalDB; AttachDbFilename = C:\\Users\\johnmunyan\\source\\repos\\FlightSystem\\FlightSystem\\Database1.mdf; Integrated Security = True");
 
         public DBTools()
         {
-            ///default constructor, there's only one database I'm using, it wouldn't work with another
+            ///default constructor, there's only one database
         }
 
         public SqlDataReader run_sql_command(string command)
@@ -43,9 +42,11 @@ namespace FlightSystem
 
         }
 
-        public float get_average(string table, string value)
+        public double get_average(string table, string obj_type) 
         {
-            string sql_command = "SELECT AVG(" + value + ") as avg FROM " + table;
+            ///uses sql function AVG() to get average value
+
+            string sql_command = "SELECT AVG(value) as avg FROM " + table + " WHERE type=" + obj_type;
             SqlDataReader reader = run_sql_command(sql_command);
 
             if (reader == null)
@@ -53,7 +54,7 @@ namespace FlightSystem
                 throw new ArgumentOutOfRangeException("reader cannot be null");
             }
 
-            float i = (float)reader.GetValue(0);
+            double i = reader.GetDouble(0);
 
             return i;
         }
@@ -93,7 +94,7 @@ namespace FlightSystem
         public Boolean bool_search_table(string table, string field, string item)
         {
 
-            ///returns true if there are any rows returned from an SQL WHERE statement
+            ///returns true if there are any rows returned from a SQL WHERE statement
 
             string command = "SELECT * FROM " + table + " WHERE " + field + "=" + item;
             SqlDataReader reader = run_sql_command(command);

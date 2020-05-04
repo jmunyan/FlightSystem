@@ -2,14 +2,10 @@
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
-/*
- * not using this because it isn't necessary
- * for the current application
- */
 
 
 namespace FlightSystem
@@ -23,44 +19,64 @@ namespace FlightSystem
         /// makes sure the sensor type is in the database, adds it if it isn't. 
         /// retrieves and stores data from fake sensors using DBTools methods
         /// </summary>
-        /// <param name="type"></param>
 
-        private DBTools db = new DBTools();
+        static DBTools db = new DBTools();
+        private string type;
+        double parameter_high;
+        double parameter_low;
 
-        public Sensors(string type, int parameter_high = 0, int parameter_low = 0)
+        public Sensors(string type, double parameter_high = 0, double parameter_low = 0)
         {
-            
+            if(db.bool_search_table("sensor_parameters", "type", type))
+            {
+                SqlDataReader reader = db.run_sql_command("SELECT parameter_high, parameter_low FROM sensor_parameters where type=" + type + "limit 1");
+                
+                this.type = type;
+                this.parameter_high = reader.GetDouble(0);
+                this.parameter_low = reader.GetDouble(1);
+            }
+            else
+            {
+                db.insert_data("sensor_parameters", "type, parameter_high, parameter_low", type + ", " + Convert.ToString(parameter_high) + ", " + Convert.ToString(parameter_low));
+                this.type = type;
+                this.parameter_high = parameter_high;
+                this.parameter_low = parameter_low;
+            }
         }
 
-        public int get_value(){
-            ///makes a random value within the bounds of the 
-            return 0;
+        public double get_value(){
+            ///useless for this implementation, because no real data is being created
+            ///
+            if(db.bool_search_table("sensor_value", "type", "0"))
+            {
+
+            }
+            return assign_Random_Test_Value();
         }
 
-        protected string[] detect(){
+        protected object[] detect()
+        {
             ///gets the sensors from the database.
 
-            string[] types;
-
             SqlDataReader reader = db.run_sql_command("SELECT type FROM sensor_parameters");
-
+            object[] types = new object[reader.FieldCount];
             return types;
             
         }
 
-        static float get_average_value(string item)
+        public double assign_Random_Test_Value()
         {
-            return db.get_average("sensor values", item);
-        }
+            double avg_value = db.get_average("sensor_values", type);
 
-        static int assign_Random_Test_Value(string item)
-        {
-            int avg_value = average_value(item);
+            double min = avg_value - (.1 * avg_value);
+            double max = avg_value + (.1 * avg_value);
 
-            int min = avg_value - (.1 * ;
-            int max = avg_value + 1;
             Random random = new Random();
-            return random.Next(min, max);
+
+            double value = random.NextDouble() * (max - min) + min;
+            db.insert_data("sensor_values", "type, value, time_of_measurement", type + ", " + Convert.ToString(value) + ", " + Convert.ToString(DateTime.Now));
+
+            return value;
         }
 
     }
