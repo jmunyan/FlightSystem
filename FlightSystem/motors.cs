@@ -41,6 +41,7 @@ namespace FlightSystem
 
         public int power(int new_power)
         {
+            output.record((double)new_power);
             current_power = new_power;
             return new_power;
         }

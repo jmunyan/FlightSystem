@@ -20,11 +20,6 @@ namespace FlightSystem
             InitializeComponent();
         }
 
-        private void systemToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void circularProgressBar1_Click(object sender, EventArgs e)
         {
 

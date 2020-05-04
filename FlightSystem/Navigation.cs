@@ -19,39 +19,46 @@ namespace FlightSystem
                 this.destx = destx;
                 this.desty = desty;
             }
-            else
-            {
-                this.set_location();
-                this.set_destination();
-            }
+            //might put else back, but had a bad design for it
         }
 
         //returns the current direction
         protected int get_bearing()
         {
             ///gets the current bearing from the database
+            ///
+            return 0;
         }
 
         //updates the altitude
         protected double get_altitude()
         {
             ///gets the current altitude from the database
+            ///
+            return 0;
 
         }
 
         public int[] get_current_location()
         {
             ///returns the current x,y(longitude, latitude) coordinates
+            ///
+            return null;
         }
 
         public string[] set_destination(int startx, int starty, int destx, int desty)
         {
+            return null;
+        }
 
+        public string[] set_location(int x, int y)
+        {
+            return null;
         }
 
         public string set_start(int startx, int starty, int destx, int desty)
         {
-            
+            return "getting rid of error so I can test other stuff";
         }
 
 
